@@ -10,7 +10,7 @@ program
     .version("0.0.1");
 
 program
-    .command("index [target]")
+    .command("scan [target]")
     .description("Run a baseline index")
     .option("-j, --json", "Output results as JSON")
     .option("-h, --html", "Generate an HTML dashboard")

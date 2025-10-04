@@ -1,9 +1,9 @@
 import fs from "fs";
 import {features} from "web-features";
 import {parse} from "node-html-parser";
+import {aggregateSupport, getEarliestDate, lowestBaseline} from "../utils/baselineSummarizer.js";
 
 // ----------------------------------------------------- DECLARATIONS
-const BASELINE_ORDER = {low: 1, medium: 2, high: 3};
 const htmlFeatures = Object.entries(features)
     .filter(([_id, f]) => f.compat_features?.some(cf => cf.startsWith("html")))
     .map(([id, f]) => ({
@@ -97,33 +97,4 @@ function buildRules() {
     }
 
     return rules;
-}
-
-function lowestBaseline(features) {
-    return Object.keys(BASELINE_ORDER).find(level => features.some(f => f.status.baseline === level)) || "unknown";
-}
-
-function aggregateSupport(features) {
-    const summary = {};
-
-    for (const feature of features) {
-        const support = feature.status.support || {};
-        for (const [browser, version] of Object.entries(support)) {
-            // take the maximum (latest required) version
-            if (!summary[browser] || version > summary[browser]) {
-                summary[browser] = version;
-            }
-        }
-    }
-
-    return summary;
-}
-
-function getEarliestDate(features) {
-    const dates = features
-        .map(f => f.status.baseline_low_date)
-        .filter(Boolean)
-        .map(d => new Date(d));
-
-    return new Date(Math.min(...dates)).toISOString().split("T")[0];
 }
