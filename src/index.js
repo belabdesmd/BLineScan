@@ -1,11 +1,10 @@
 import path from "path";
-import { walkFiles } from "../utils/fileWalker.js";
-import { analyzeHtml } from "./html.js";
+import { walkFiles } from "./utils/fileWalker.js";
+import { analyzeHtml } from "./analyzers/htmlAnalyzer.js";
 
-export async function scan(target, options) {
+export function scan(target, options) {
     const dir = target ? path.resolve(target) : process.cwd();
     console.log(`🔍 Scanning: ${dir}`);
-
 
     const files = walkFiles(dir);
     const results = [];
@@ -15,6 +14,7 @@ export async function scan(target, options) {
             console.log(analyzeHtml(file).summary);
             //results.push(...analyzeHtml(file));
         }
+
         // Later: add analyzeJs, analyzeCss
     }
 
