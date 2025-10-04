@@ -1,0 +1,13 @@
+{
+  "name": "blinescan",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "blinescan": "bin/cli.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.1",
+    "node-html-parser": "^7.0.1",
+    "web-features": "^3.3.0"
+  }
+}
