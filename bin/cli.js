@@ -12,8 +12,10 @@ program
 program
     .command("scan [target]")
     .description("Run a baseline index")
-    .option("-j, --json", "Output results as JSON")
-    .option("-h, --html", "Generate an HTML dashboard")
+    .option(
+        "--remote [hours]",
+        "Upload the report for remote access (optionally specify number of hours, defaults to 24)"
+    )
     .action((target, options) => {
         scan(target, options);
     });

@@ -8,8 +8,10 @@ import {analyzeHtml} from "./analyzers/htmlAnalyzer.js";
 import {analyzeCss} from "./analyzers/cssAnalyzer.js";
 import {getOverallSummary} from "./utils/baselineSummarizer.js";
 
-export function scan(target, options) {
+export async function scan(target, options) {
     const dir = target ? path.resolve(target) : process.cwd();
+    const {remote} = options;
+
     console.log(`🔍 Scanning: ${dir}`);
 
     const files = walkFiles(dir);
@@ -23,11 +25,28 @@ export function scan(target, options) {
     }
 
     // Save Report Locally
-    saveReport({overall: getOverallSummary(result.html, result.css), ...result});
+    const filePath = saveReport({overall: getOverallSummary(result.html, result.css), ...result});
+    if (remote !== undefined) {
+        const hours = remote === true || remote === "" ? 24 : Number(remote);
+        if (isNaN(hours) || hours <= 0) {
+            console.error("❌ Invalid value for --remote. It must be a positive number of hours.");
+            process.exit(1);
+        }
 
+        console.log(`🌐 Remote upload enabled. Expiration in ${hours} hour(s).`);
 
-    // TODO: Finish this part later
-    if (options.json) {
+        // Upload report!
+        await uploadReport(filePath, "https://blinescan-bucket.belfodil.me", "https://blinescan.belfodil.me", hours);
+    } else {
+        // Start Dashboard Locally
+        const root = path.join(process.cwd(), ".baseline-reports");
+        const serve = serveStatic(root);
+        const server = http.createServer((req, res) => serve(req, res, finalhandler(req, res)));
+        server.listen(0, () => {
+            const port = server.address().port;
+            const url = `http://localhost:${port}?file=reports/${encodeURIComponent(path.basename(filePath))}`;
+            console.log("Open:", url);
+        });
     }
 }
 
@@ -44,19 +63,38 @@ export function saveReport(report, projectRoot = process.cwd()) {
     const filePath = path.join(reportsDir, fileName);
 
     // Write JSON with pretty format
-    fs.cpSync("dashboard/dist/blinescan-dash/browser", ".baseline-reports", { recursive: true });
+    fs.cpSync("dashboard/dist/blinescan-dash/browser", ".baseline-reports", {recursive: true});
     fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
 
     console.log(`✅ Baseline report saved at: ${filePath}`);
 
-    const root = path.join(process.cwd(), ".baseline-reports");
-    const serve = serveStatic(root);
-    const server = http.createServer((req, res) => serve(req, res, finalhandler(req, res)));
-    server.listen(0, () => {
-        const port = server.address().port;
-        const url = `http://localhost:${port}?file=reports/${encodeURIComponent(fileName)}`;
-        console.log("Open:", url);
-    });
-
     return filePath;
+}
+
+export async function uploadReport(filePath, serverUrl, dashUrl, hours = 24) {
+    const fileStream = fs.createReadStream(filePath);
+    const formData = new FormData();
+    formData.append("file", fileStream, path.basename(filePath));
+
+    try {
+        const response = await fetch(`${serverUrl}/api/upload?hours=${hours}`, {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Upload failed: ${response.status} ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log(`✅ Uploaded successfully!`);
+        console.log(`🆔 Report ID: ${data.id}`);
+        console.log(`⏱ Expires in: ${data.expiresInHours}h`);
+        console.log(`🌍 Remote URL: ${serverUrl}/?file=${data.id}`);
+        return data;
+    } catch (err) {
+        console.error("❌ Failed to upload report:", err.message);
+        throw err;
+    }
 }
