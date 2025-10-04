@@ -1,4 +1,3 @@
-// ----------------------------------------------------- DECLARATIONS
 const BASELINE_ORDER = {low: 1, medium: 2, high: 3};
 
 // ----------------------------------------------------- TOOLS
@@ -29,8 +28,24 @@ export function getEarliestDate(features) {
         .filter(Boolean)
         .map(d => new Date(d));
 
-    console.log(features
-        .map(f => f.status.baseline_low_date)
-        .filter(d => d != null));
     return new Date(Math.min(...dates)).toISOString().split("T")[0];
+}
+
+export function getOverallSummary(htmlReport, cssReport) {
+    const allFeatures = [...htmlReport.features, ...cssReport.features];
+
+    const totalCount = allFeatures.length;
+    const overallLevel = lowestBaseline(allFeatures);
+    const earliestDate = getEarliestDate(allFeatures);
+
+    const supportSummary = overallLevel === "low"
+            ? "Includes some newer or less supported features"
+            : "All features are well supported across modern browsers";
+
+    return {
+        featureCount: totalCount,
+        baselineLevel: overallLevel,
+        supportSummary,
+        earliestDate
+    };
 }
