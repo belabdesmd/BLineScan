@@ -8,7 +8,6 @@
   "dependencies": {
     "commander": "^14.0.1",
     "finalhandler": "^2.1.0",
-    "form-data": "^4.0.4",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^7.0.1",
     "postcss": "^8.5.6",

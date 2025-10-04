@@ -3,6 +3,7 @@ import path from "path";
 import http from "http";
 import serveStatic from "serve-static";
 import finalhandler from "finalhandler";
+import fetch, {FormData} from "node-fetch";
 import {walkFiles} from "./utils/fileWalker.js";
 import {analyzeHtml} from "./analyzers/htmlAnalyzer.js";
 import {analyzeCss} from "./analyzers/cssAnalyzer.js";
@@ -91,7 +92,7 @@ export async function uploadReport(filePath, serverUrl, dashUrl, hours = 24) {
         console.log(`✅ Uploaded successfully!`);
         console.log(`🆔 Report ID: ${data.id}`);
         console.log(`⏱ Expires in: ${data.expiresInHours}h`);
-        console.log(`🌍 Remote URL: ${serverUrl}/?file=${data.id}`);
+        console.log(`🌍 Remote URL: ${dashUrl}?file=${data.id}`);
         return data;
     } catch (err) {
         console.error("❌ Failed to upload report:", err.message);
