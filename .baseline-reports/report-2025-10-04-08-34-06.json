@@ -1,0 +1,1201 @@
+{
+  "overall": {
+    "featureCount": 72,
+    "baselineLevel": "low",
+    "supportSummary": "Includes some newer or less supported features",
+    "earliestDate": "2015-07-29"
+  },
+  "html": {
+    "summary": {
+      "detected_features": 5,
+      "baseline_level": "low",
+      "support_summary": {
+        "chrome": "77",
+        "chrome_android": "77",
+        "edge": "79",
+        "firefox": "98",
+        "firefox_android": "98",
+        "safari": "6",
+        "safari_ios": "6"
+      },
+      "baseline_lowest_date": "2015-07-29"
+    },
+    "features": [
+      {
+        "name": "<video>",
+        "description": "The <video> element plays videos or movies, optionally with controls provided by the browser.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "3",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "3.5",
+            "firefox_android": "4",
+            "safari": "3.1",
+            "safari_ios": "3"
+          }
+        }
+      },
+      {
+        "name": "Text tracks",
+        "description": "The <track> element is used as a child of the media elements that lets you specify a timed text track to be displayed in parallel with the media element.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "23",
+            "chrome_android": "25",
+            "edge": "12",
+            "firefox": "31",
+            "firefox_android": "31",
+            "safari": "6",
+            "safari_ios": "6"
+          }
+        }
+      },
+      {
+        "name": "<dialog>",
+        "description": "The <dialog> HTML element represents a modal or non-modal dialog box, such as a confirmation prompt or a subwindow used to enter data.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2024-09-14",
+          "baseline_low_date": "2022-03-14",
+          "support": {
+            "chrome": "37",
+            "chrome_android": "37",
+            "edge": "79",
+            "firefox": "98",
+            "firefox_android": "98",
+            "safari": "15.4",
+            "safari_ios": "15.4"
+          }
+        }
+      },
+      {
+        "name": "<img>",
+        "description": "The <img> element adds an image into the document.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "1",
+            "firefox_android": "4",
+            "safari": "1",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "Lazy-loading images and iframes",
+        "description": "The loading=\"lazy\" attribute for <img> and <iframe> elements blocks loading the external resource until the user scrolls to that element's part of the page.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-12-19",
+          "support": {
+            "chrome": "77",
+            "chrome_android": "77",
+            "edge": "79",
+            "firefox": "121",
+            "firefox_android": "121",
+            "safari": "16.4",
+            "safari_ios": "16.4"
+          }
+        }
+      }
+    ]
+  },
+  "css": {
+    "summary": {
+      "detected_features": 67,
+      "baseline_level": "low",
+      "support_summary": {
+        "chrome": "98",
+        "chrome_android": "98",
+        "edge": "≤15",
+        "firefox": "92",
+        "firefox_android": "92",
+        "safari": "≤4",
+        "safari_ios": "≤3.2"
+      },
+      "baseline_lowest_date": "2015-07-29"
+    },
+    "features": [
+      {
+        "name": "Display",
+        "description": "The display CSS property sets the display behavior of an element's box within its layout and sets the layout behavior for its child elements.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "1",
+            "firefox_android": "4",
+            "safari": "1",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "display animation",
+        "description": "You can animate elements between display: none and any other display value or animate between content-visibility: hidden and any other content-visibility value. This also applies to transitions.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "117",
+            "chrome_android": "117",
+            "edge": "117",
+            "safari": "18",
+            "safari_ios": "18"
+          }
+        }
+      },
+      {
+        "name": "display: contents",
+        "description": "The display: contents CSS declaration sets an element to display only its contents, not itself.",
+        "status": {
+          "baseline": false,
+          "support": {}
+        }
+      },
+      {
+        "name": "display: flow-root",
+        "description": "The display: flow-root CSS declaration sets an element as the root element of a new flow layout for its children, preventing margin collapse with sibling elements.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2022-07-15",
+          "baseline_low_date": "2020-01-15",
+          "support": {
+            "chrome": "58",
+            "chrome_android": "58",
+            "edge": "79",
+            "firefox": "53",
+            "firefox_android": "53",
+            "safari": "13",
+            "safari_ios": "13"
+          }
+        }
+      },
+      {
+        "name": "display: list-item",
+        "description": "The display: list-item CSS declaration renders an element with the box layout of a <li> HTML element.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "1",
+            "firefox_android": "4",
+            "safari": "1",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "display: ruby",
+        "description": "The display: ruby CSS declaration renders an element with the box layout of a <ruby> HTML element. Child elements may use equivalents to <ruby> internal elements such as display: ruby-base for <rb>.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "firefox": "88",
+            "firefox_android": "88"
+          }
+        }
+      },
+      {
+        "name": "display: table",
+        "description": "The display: table CSS declaration renders an element with the box layout of a <table> HTML element. Child elements may use equivalents to <table> internal elements such as display: table-row for <tr>.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "≤2019-10-05",
+          "baseline_low_date": "≤2017-04-05",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "≤15",
+            "firefox": "3",
+            "firefox_android": "4",
+            "safari": "≤4",
+            "safari_ios": "≤3.2"
+          }
+        }
+      },
+      {
+        "name": "Flexbox",
+        "description": "Flexbox is a one-dimensional layout system, which places content either horizontally or vertically, with optional wrapping.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-03-30",
+          "baseline_low_date": "2015-09-30",
+          "support": {
+            "chrome": "29",
+            "chrome_android": "29",
+            "edge": "12",
+            "firefox": "20",
+            "firefox_android": "20",
+            "safari": "9",
+            "safari_ios": "9"
+          }
+        }
+      },
+      {
+        "name": "Grid",
+        "description": "CSS grid is a two-dimensional layout system, which lays content out in rows and columns.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2020-04-17",
+          "baseline_low_date": "2017-10-17",
+          "support": {
+            "chrome": "57",
+            "chrome_android": "57",
+            "edge": "16",
+            "firefox": "52",
+            "firefox_android": "52",
+            "safari": "10.1",
+            "safari_ios": "10.3"
+          }
+        }
+      },
+      {
+        "name": "MathML",
+        "description": "MathML, or the Mathematical Markup Language, describes mathematical notation, such as expressions and formulas. Also known as MathML Core.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-07-12",
+          "baseline_low_date": "2023-01-12",
+          "support": {
+            "chrome": "109",
+            "chrome_android": "109",
+            "edge": "109",
+            "firefox": "4",
+            "firefox_android": "4",
+            "safari": "5.1",
+            "safari_ios": "5"
+          }
+        }
+      },
+      {
+        "name": "Two-value display property",
+        "description": "The display CSS property accepts multiple keyword values, such as inline flex or block flow, to explicitly set an element's inner and outer layout mode. Also known as 2-value, multi-keyword, or multiple value syntax.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-07-21",
+          "support": {
+            "chrome": "115",
+            "chrome_android": "115",
+            "edge": "115",
+            "firefox": "70",
+            "firefox_android": "79",
+            "safari": "15",
+            "safari_ios": "15"
+          }
+        }
+      },
+      {
+        "name": "Grid animation",
+        "description": "Grid animation allows you to animate the grid-template-columns and grid-template-rows CSS properties.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-04-27",
+          "baseline_low_date": "2022-10-27",
+          "support": {
+            "chrome": "107",
+            "chrome_android": "107",
+            "edge": "107",
+            "firefox": "66",
+            "firefox_android": "66",
+            "safari": "16",
+            "safari_ios": "16"
+          }
+        }
+      },
+      {
+        "name": "Masonry",
+        "description": "Masonry is a type of CSS grid layout where the items on one of the axes are tightly packed together, like brickwork, instead of leaving gaps to align across the other axis.",
+        "status": {
+          "baseline": false,
+          "support": {}
+        }
+      },
+      {
+        "name": "Subgrid",
+        "description": "The subgrid value for the grid-template-columns and grid-template-rows properties allows a grid item to inherit the grid definition of its parent grid container.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-09-15",
+          "support": {
+            "chrome": "117",
+            "chrome_android": "117",
+            "edge": "117",
+            "firefox": "71",
+            "firefox_android": "79",
+            "safari": "16",
+            "safari_ios": "16"
+          }
+        }
+      },
+      {
+        "name": "Flexbox gap",
+        "description": "The gap CSS property in a flexbox layout sets the size of the space between items.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2023-10-26",
+          "baseline_low_date": "2021-04-26",
+          "support": {
+            "chrome": "84",
+            "chrome_android": "84",
+            "edge": "84",
+            "firefox": "63",
+            "firefox_android": "63",
+            "safari": "14.1",
+            "safari_ios": "14.5"
+          }
+        }
+      },
+      {
+        "name": "Multi-column layout",
+        "description": "Multi-column layout flows an element's content across one or more columns in a single row, without affecting the display property of its children.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2019-09-07",
+          "baseline_low_date": "2017-03-07",
+          "support": {
+            "chrome": "50",
+            "chrome_android": "50",
+            "edge": "12",
+            "firefox": "52",
+            "firefox_android": "52",
+            "safari": "9",
+            "safari_ios": "9"
+          }
+        }
+      },
+      {
+        "name": "font-family",
+        "description": "The font-family CSS property sets the desired font face for text, along with optional fallback font faces.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "1",
+            "firefox_android": "4",
+            "safari": "1",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "Math font family",
+        "description": "The font-family: math CSS declaration uses the browser default font face for displaying mathematical expressions.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "109",
+            "chrome_android": "109",
+            "edge": "109"
+          }
+        }
+      },
+      {
+        "name": "System font",
+        "description": "The font-family: system-ui CSS declaration uses the operating system default font for text.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2024-03-07",
+          "baseline_low_date": "2021-09-07",
+          "support": {
+            "chrome": "56",
+            "chrome_android": "56",
+            "edge": "79",
+            "firefox": "92",
+            "firefox_android": "92",
+            "safari": "11",
+            "safari_ios": "11"
+          }
+        }
+      },
+      {
+        "name": "UI fonts",
+        "description": "The ui-serif, ui-sans-serif, ui-monospace and ui-rounded values for the font-family CSS property use device-default user interface fonts for text.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "safari": "13.1",
+            "safari_ios": "13.4"
+          }
+        }
+      },
+      {
+        "name": "background",
+        "description": "The background CSS property is a shorthand that sets several background properties at once.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "3.6",
+            "firefox_android": "4",
+            "safari": "1.3",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "background-clip",
+        "description": "The background-clip CSS property sets the extent of the background: the padding box, the content box, or the default border box.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "21",
+            "chrome_android": "25",
+            "edge": "12",
+            "firefox": "22",
+            "firefox_android": "22",
+            "safari": "5.1",
+            "safari_ios": "5"
+          }
+        }
+      },
+      {
+        "name": "background-origin",
+        "description": "The background-origin CSS property sets the background starting position relative to the border and padding of an element.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "21",
+            "chrome_android": "25",
+            "edge": "12",
+            "firefox": "22",
+            "firefox_android": "22",
+            "safari": "5.1",
+            "safari_ios": "4"
+          }
+        }
+      },
+      {
+        "name": "background-size",
+        "description": "The background-size CSS property scales or stretches a background based on the size of the element (with the contain and cover keywords), a length, or percentage.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "21",
+            "chrome_android": "25",
+            "edge": "12",
+            "firefox": "9",
+            "firefox_android": "18",
+            "safari": "5.1",
+            "safari_ios": "4.2"
+          }
+        }
+      },
+      {
+        "name": "SVG",
+        "description": "The SVG image format, represented by the <svg> element, creates two-dimensional vector graphics with declarative or scripted interaction and animation.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2022-07-15",
+          "baseline_low_date": "2020-01-15",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "79",
+            "firefox": "3",
+            "firefox_android": "4",
+            "safari": "3",
+            "safari_ios": "2"
+          }
+        }
+      },
+      {
+        "name": "Container queries",
+        "description": "Container size queries with the @container at-rule apply styles to an element based on the dimensions of its container.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-08-14",
+          "baseline_low_date": "2023-02-14",
+          "support": {
+            "chrome": "105",
+            "chrome_android": "105",
+            "edge": "105",
+            "firefox": "110",
+            "firefox_android": "110",
+            "safari": "16",
+            "safari_ios": "16"
+          }
+        }
+      },
+      {
+        "name": "Container scroll-state queries",
+        "description": "Container scroll-state queries with the @container scroll-state(...) at-rule apply styles to an element based on the sticky positioning, snapped, and scrollable state of the container.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "133",
+            "chrome_android": "133",
+            "edge": "133"
+          }
+        }
+      },
+      {
+        "name": "accent-color",
+        "description": "The accent-color CSS property sets a color for checkboxes, radio buttons, and other form controls.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "93",
+            "edge": "93",
+            "firefox": "92",
+            "firefox_android": "92"
+          }
+        }
+      },
+      {
+        "name": "aspect-ratio",
+        "description": "The aspect-ratio CSS property controls the width-to-height ratio of elements. For <img> and <video> elements, the width and height attributes used together with height: auto control the aspect ratio while the image/video is loading.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2024-03-20",
+          "baseline_low_date": "2021-09-20",
+          "support": {
+            "chrome": "88",
+            "chrome_android": "88",
+            "edge": "88",
+            "firefox": "89",
+            "firefox_android": "89",
+            "safari": "15",
+            "safari_ios": "15"
+          }
+        }
+      },
+      {
+        "name": "overflow: clip",
+        "description": "The overflow: clip CSS declaration clips an element's overflowing content to the box that's defined by the overflow-clip-margin property. Unlike overflow: hidden, it allows you to hide overflow on one axis while keeping overflow on the other axis visible.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-03-12",
+          "baseline_low_date": "2022-09-12",
+          "support": {
+            "chrome": "90",
+            "chrome_android": "90",
+            "edge": "90",
+            "firefox": "81",
+            "firefox_android": "81",
+            "safari": "16",
+            "safari_ios": "16"
+          }
+        }
+      },
+      {
+        "name": "overflow",
+        "description": "The overflow CSS property sets the behavior for when content doesn't fit in an element.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2022-09-24",
+          "baseline_low_date": "2020-03-24",
+          "support": {
+            "chrome": "68",
+            "chrome_android": "68",
+            "edge": "79",
+            "firefox": "61",
+            "firefox_android": "61",
+            "safari": "13.1",
+            "safari_ios": "13.4"
+          }
+        }
+      },
+      {
+        "name": "View transitions",
+        "description": "View transitions allow you to create animated visual transitions between different states of a document.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "111",
+            "chrome_android": "111",
+            "edge": "111",
+            "safari": "18",
+            "safari_ios": "18"
+          }
+        }
+      },
+      {
+        "name": "font-language-override",
+        "description": "The font-language-override CSS property sets which language-specific glyphs are displayed.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "firefox": "34",
+            "firefox_android": "34"
+          }
+        }
+      },
+      {
+        "name": "color-gamut media query",
+        "description": "The color-gamut media query sets styles based on the colors a device can display.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-02-14",
+          "support": {
+            "chrome": "58",
+            "chrome_android": "58",
+            "edge": "79",
+            "firefox": "110",
+            "firefox_android": "110",
+            "safari": "10",
+            "safari_ios": "10"
+          }
+        }
+      },
+      {
+        "name": "Device posture",
+        "description": "The device posture API and the device-posture CSS media feature reflect the physical posture of a device, such as whether a foldable device is folded or unfolded.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "132",
+            "chrome_android": "132",
+            "edge": "132"
+          }
+        }
+      },
+      {
+        "name": "Device media queries",
+        "description": "The device-aspect-ratio, device-height, and device-width media features describe physical properties of the displaying output device.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "2",
+            "firefox_android": "4",
+            "safari": "3",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "display-mode media query",
+        "description": "The display-mode CSS media query sets styles based on whether the web page is in fullscreen, standalone, minimal-ui, browser, or picture-in-picture mode.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "123",
+            "edge": "123"
+          }
+        }
+      },
+      {
+        "name": "dynamic-range media query",
+        "description": "The dynamic-range CSS media query sets styles based on whether a device can display at least standard range colors or at least high range colors. Non-visual devices will match neither.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2024-11-03",
+          "baseline_low_date": "2022-05-03",
+          "support": {
+            "chrome": "98",
+            "chrome_android": "98",
+            "edge": "98",
+            "firefox": "100",
+            "firefox_android": "100",
+            "safari": "13.1",
+            "safari_ios": "13.4"
+          }
+        }
+      },
+      {
+        "name": "Forced colors",
+        "description": "The forced-colors CSS @media rule detects when a user has chosen to use a forced colors mode, also known as high-contrast mode, and the forced-color-adjust CSS property sets whether forced colors apply to an element.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-03-12",
+          "baseline_low_date": "2022-09-12",
+          "support": {
+            "chrome": "89",
+            "chrome_android": "89",
+            "edge": "79",
+            "firefox": "89",
+            "firefox_android": "89",
+            "safari": "16",
+            "safari_ios": "16"
+          }
+        }
+      },
+      {
+        "name": "Interaction media queries",
+        "description": "The pointer, any-pointer, hover, and any-hover CSS media queries set styles based on the presence of pointing devices and their ability to hover over elements. For example, most smartphones match the (hover: none) and (pointer: coarse) media query.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2021-06-11",
+          "baseline_low_date": "2018-12-11",
+          "support": {
+            "chrome": "41",
+            "chrome_android": "41",
+            "edge": "12",
+            "firefox": "64",
+            "firefox_android": "64",
+            "safari": "9",
+            "safari_ios": "9"
+          }
+        }
+      },
+      {
+        "name": "inverted-colors media query",
+        "description": "The inverted-colors CSS media query sets styles based on whether the user has inverted all colors, such as with mobile accessibility settings.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "safari": "9.1",
+            "safari_ios": "10"
+          }
+        }
+      },
+      {
+        "name": "Media queries",
+        "description": "The @media CSS rule conditionally applies styles based on the output device type, its capabilities, and the user's preferences. Media queries are composed of an optional media type such as screen or print, and one or more mandatory media features, such as prefers-reduced-animations.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "1",
+            "firefox_android": "4",
+            "safari": "3",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "Media query range syntax",
+        "description": "The range syntax of CSS media queries allows you to use mathematical comparison operators such as <, >, <=, and >= to define a range of values for a media query. For example, (400px < width < 1000px) returns true if the viewport width is between 400px and 1000px.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-09-27",
+          "baseline_low_date": "2023-03-27",
+          "support": {
+            "chrome": "104",
+            "chrome_android": "104",
+            "edge": "104",
+            "firefox": "102",
+            "firefox_android": "102",
+            "safari": "16.4",
+            "safari_ios": "16.4"
+          }
+        }
+      },
+      {
+        "name": "Overflow media queries",
+        "description": "The overflow-block and overflow-inline CSS media queries set styles based on the way a device displays content that's larger than the viewport or page area. For example, a laptop lets users scroll to reveal content, while a printer displays overflowing content on additional pages.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-09-18",
+          "support": {
+            "chrome": "113",
+            "chrome_android": "113",
+            "edge": "113",
+            "firefox": "66",
+            "firefox_android": "66",
+            "safari": "17",
+            "safari_ios": "17"
+          }
+        }
+      },
+      {
+        "name": "prefers-color-scheme media query",
+        "description": "The prefers-color-scheme CSS media query sets styles based on the requested color scheme, light or dark.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2022-07-15",
+          "baseline_low_date": "2020-01-15",
+          "support": {
+            "chrome": "76",
+            "chrome_android": "76",
+            "edge": "79",
+            "firefox": "67",
+            "firefox_android": "67",
+            "safari": "12.1",
+            "safari_ios": "13"
+          }
+        }
+      },
+      {
+        "name": "prefers-contrast media query",
+        "description": "The prefers-contrast CSS media query sets styles based on whether the user prefers more or less contrast, the difference between foreground and background colors.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2024-11-30",
+          "baseline_low_date": "2022-05-31",
+          "support": {
+            "chrome": "96",
+            "chrome_android": "96",
+            "edge": "96",
+            "firefox": "101",
+            "firefox_android": "101",
+            "safari": "14.1",
+            "safari_ios": "14.5"
+          }
+        }
+      },
+      {
+        "name": "prefers-reduced-data media query",
+        "description": "The prefers-reduced-data CSS media query detects whether the user has a preference for using less network traffic. For example, you can use this media query to avoid loading large font files and use a system font instead.",
+        "status": {
+          "baseline": false,
+          "support": {}
+        }
+      },
+      {
+        "name": "prefers-reduced-motion media query",
+        "description": "The prefers-reduced-motion CSS media query sets styles based on whether the user prefers to minimize the amount of non-essential animations on the device, such as scrolling, panning, zooming, and strobing.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2022-07-15",
+          "baseline_low_date": "2020-01-15",
+          "support": {
+            "chrome": "74",
+            "chrome_android": "74",
+            "edge": "79",
+            "firefox": "63",
+            "firefox_android": "64",
+            "safari": "10.1",
+            "safari_ios": "10.3"
+          }
+        }
+      },
+      {
+        "name": "prefers-reduced-transparency media query",
+        "description": "The prefers-reduced-transparency CSS media query sets styles based on whether the user prefers to reduce the amount of transparent effects on their device, for example to improve contrast and legibility.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "119",
+            "chrome_android": "119",
+            "edge": "119"
+          }
+        }
+      },
+      {
+        "name": "resolution media query",
+        "description": "The resolution CSS media query sets styles based on the pixel density, or how many pixels a device uses to display a single CSS pixel.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-03-12",
+          "baseline_low_date": "2022-09-12",
+          "support": {
+            "chrome": "68",
+            "chrome_android": "68",
+            "edge": "79",
+            "firefox": "62",
+            "firefox_android": "62",
+            "safari": "16",
+            "safari_ios": "16"
+          }
+        }
+      },
+      {
+        "name": "resolution media query (compatibility prefixes)",
+        "description": "The -webkit-device-pixel-ratio, -webkit-min-device-pixel-ratio, and -webkit-max-device-pixel-ratio CSS media queries are standardized compatibility alternatives to resolution media queries.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2021-04-23",
+          "baseline_low_date": "2018-10-23",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "63",
+            "firefox_android": "63",
+            "safari": "3",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "scripting media query",
+        "description": "The scripting CSS media query sets styles based on whether scripting such as JavaScript is available. Values are enabled if scripting is available, initial-only if scripting is only available on page load (for example, printed content), or none.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-12-07",
+          "support": {
+            "chrome": "120",
+            "chrome_android": "120",
+            "edge": "120",
+            "firefox": "113",
+            "firefox_android": "113",
+            "safari": "17",
+            "safari_ios": "17"
+          }
+        }
+      },
+      {
+        "name": "@supports (compatibility prefix)",
+        "description": "The @supports (-webkit-transform-3d) CSS media query is a standardized compatibility alternative to @supports (transform-style).",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2019-03-20",
+          "baseline_low_date": "2016-09-20",
+          "support": {
+            "chrome": "2",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "49",
+            "firefox_android": "49",
+            "safari": "4",
+            "safari_ios": "3.2"
+          }
+        }
+      },
+      {
+        "name": "Update frequency media query",
+        "description": "The update CSS media query sets styles based on whether and how fast the user's device can modify display after it has been rendered. For example, you can avoid animations on devices that aren't fast enough to display them smoothly.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-09-18",
+          "support": {
+            "chrome": "113",
+            "chrome_android": "113",
+            "edge": "113",
+            "firefox": "102",
+            "firefox_android": "102",
+            "safari": "17",
+            "safari_ios": "17"
+          }
+        }
+      },
+      {
+        "name": "video-dynamic-range media query",
+        "description": "The video-dynamic-range CSS media query sets styles based on whether a device can display video with at least standard range colors or at least high range colors. Non-visual devices will match neither.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "firefox": "100",
+            "firefox_android": "100"
+          }
+        }
+      },
+      {
+        "name": "Viewport segments",
+        "description": "The viewport segment CSS environment variables and media features, and the viewport.segments API, allow you to adapt your layout to devices where the display is split, such as on foldable devices.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "138",
+            "chrome_android": "138",
+            "edge": "138"
+          }
+        }
+      },
+      {
+        "name": "font-stretch",
+        "description": "The font-stretch CSS property selects a font face from a font family based on width, either by a keyword such as condensed or a percentage.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "60",
+            "chrome_android": "60",
+            "edge": "12",
+            "firefox": "9",
+            "firefox_android": "9",
+            "safari": "11",
+            "safari_ios": "11"
+          }
+        }
+      },
+      {
+        "name": ":has()",
+        "description": "The :has() CSS functional pseudo-class matches an element if any of the selectors passed as parameters would match at least one element.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2023-12-19",
+          "support": {
+            "chrome": "105",
+            "chrome_android": "105",
+            "edge": "105",
+            "firefox": "121",
+            "firefox_android": "121",
+            "safari": "15.4",
+            "safari_ios": "15.4"
+          }
+        }
+      },
+      {
+        "name": "User action pseudo-classes",
+        "description": "The :active, :focus, and :hover CSS pseudo-classes match elements based on how users are interacting with them.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2018-01-29",
+          "baseline_low_date": "2015-07-29",
+          "support": {
+            "chrome": "1",
+            "chrome_android": "18",
+            "edge": "12",
+            "firefox": "1",
+            "firefox_android": "4",
+            "safari": "2",
+            "safari_ios": "1"
+          }
+        }
+      },
+      {
+        "name": "outline",
+        "description": "The outline CSS shorthand sets the color, style, and width of a line around an element, outside of the border.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2025-09-27",
+          "baseline_low_date": "2023-03-27",
+          "support": {
+            "chrome": "94",
+            "chrome_android": "94",
+            "edge": "94",
+            "firefox": "88",
+            "firefox_android": "88",
+            "safari": "16.4",
+            "safari_ios": "16.4"
+          }
+        }
+      },
+      {
+        "name": "text-wrap",
+        "description": "The text-wrap CSS property sets how lines break in text that overflows the container. It is a shorthand for text-wrap-style and text-wrap-mode.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2024-03-19",
+          "support": {
+            "chrome": "114",
+            "chrome_android": "114",
+            "edge": "114",
+            "firefox": "124",
+            "firefox_android": "124",
+            "safari": "17.4",
+            "safari_ios": "17.4"
+          }
+        }
+      },
+      {
+        "name": "text-wrap: balance",
+        "description": "The text-wrap: balance CSS declaration balances the length of each line when text is broken into multiple lines. Also known as headline balancing.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2024-05-13",
+          "support": {
+            "chrome": "114",
+            "chrome_android": "114",
+            "edge": "114",
+            "firefox": "121",
+            "firefox_android": "121",
+            "safari": "17.5",
+            "safari_ios": "17.5"
+          }
+        }
+      },
+      {
+        "name": "text-wrap: nowrap",
+        "description": "The text-wrap: nowrap CSS declaration prevents text breaking into multiple lines. Text that doesn't fit overflows instead.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2024-03-19",
+          "support": {
+            "chrome": "114",
+            "chrome_android": "114",
+            "edge": "114",
+            "firefox": "124",
+            "firefox_android": "124",
+            "safari": "17.4",
+            "safari_ios": "17.4"
+          }
+        }
+      },
+      {
+        "name": "text-wrap: pretty",
+        "description": "The text-wrap: pretty CSS declaration prioritizes better layout over speed when text is broken into multiple lines.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "117",
+            "chrome_android": "117",
+            "edge": "117",
+            "safari": "26",
+            "safari_ios": "26"
+          }
+        }
+      },
+      {
+        "name": "text-wrap: stable",
+        "description": "The text-wrap: stable CSS declaration wraps text using the default algorithm, but does not change wrapping on earlier lines while the text is being edited.",
+        "status": {
+          "baseline": "low",
+          "baseline_low_date": "2024-10-17",
+          "support": {
+            "chrome": "130",
+            "chrome_android": "130",
+            "edge": "130",
+            "firefox": "121",
+            "firefox_android": "121",
+            "safari": "17.5",
+            "safari_ios": "17.5"
+          }
+        }
+      },
+      {
+        "name": "object-fit",
+        "description": "The object-fit CSS property sets how images, videos, and other replaced elements are scaled within their container.",
+        "status": {
+          "baseline": "high",
+          "baseline_high_date": "2022-07-15",
+          "baseline_low_date": "2020-01-15",
+          "support": {
+            "chrome": "32",
+            "chrome_android": "32",
+            "edge": "79",
+            "firefox": "36",
+            "firefox_android": "36",
+            "safari": "10",
+            "safari_ios": "10"
+          }
+        }
+      },
+      {
+        "name": "Anchor positioning",
+        "description": "Anchor positioning places an element based on the position of another element. For example, you can place a tooltip next to the content it references.",
+        "status": {
+          "baseline": false,
+          "support": {
+            "chrome": "125",
+            "chrome_android": "125",
+            "edge": "125",
+            "safari": "26",
+            "safari_ios": "26"
+          }
+        }
+      }
+    ]
+  }
+}

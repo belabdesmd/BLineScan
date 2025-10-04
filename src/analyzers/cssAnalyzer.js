@@ -19,11 +19,13 @@ const cssFeatures = Object.entries(features)
 
 // ----------------------------------------------------- MAIN
 const rules = buildRules();
+
 export function analyzeCss(filePath) {
     const css = fs.readFileSync(filePath, "utf8");
     const syntax = getSyntaxByExtension(filePath);
     const root = postcss().process(css, {parser: safeParser, syntax}).root;
     const foundFeatures = new Set();
+    const seen = new Set();
 
     root.walk((node) => {
         if (node.type === "decl") {
@@ -33,12 +35,16 @@ export function analyzeCss(filePath) {
             for (const r of rules) {
                 // CSS Properties
                 if (r.category === "properties" && r.part === prop) {
+                    if (seen.has(r.name)) continue;
                     foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                    seen.add(r.name);
                 }
 
                 // CSS Functions
                 if (r.category === "functions" && value?.includes(`${r.part}(`)) {
+                    if (seen.has(r.name)) continue;
                     foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                    seen.add(r.name);
                 }
             }
         }
@@ -46,7 +52,9 @@ export function analyzeCss(filePath) {
             const name = node.name.toLowerCase();
             for (const r of rules) {
                 if (r.category === "at-rules" && r.part === name) {
+                    if (seen.has(r.name)) continue;
                     foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                    seen.add(r.name);
                 }
             }
         }
@@ -56,7 +64,9 @@ export function analyzeCss(filePath) {
                 const sel = match[1];
                 for (const r of rules) {
                     if (r.category === "selectors" && r.part === sel) {
+                        if (seen.has(r.name)) continue;
                         foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                        seen.add(r.name);
                     }
                 }
             }

@@ -20,6 +20,7 @@ export function analyzeHtml(filePath) {
     const html = fs.readFileSync(filePath, "utf-8");
     const root = parse(html);
     const foundFeatures = new Set();
+    const seen = new Set();
 
     function traverse(node) {
         if (node.tagName) {
@@ -29,13 +30,19 @@ export function analyzeHtml(filePath) {
             // Check element rules
             for (const r of rules) {
                 if (r.type === "element" && r.tag === tag) {
+                    if (seen.has(r.name)) continue;
                     foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                    seen.add(r.name);
                 }
                 if (r.type === "element-attr" && r.tag === tag && attrs.includes(r.attr)) {
+                    if (seen.has(r.name)) continue;
                     foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                    seen.add(r.name);
                 }
                 if (r.type === "global-attr" && attrs.includes(r.attr)) {
+                    if (seen.has(r.name)) continue;
                     foundFeatures.add({name: r.name, description: r.description, status: r.status});
+                    seen.add(r.name);
                 }
             }
         }
