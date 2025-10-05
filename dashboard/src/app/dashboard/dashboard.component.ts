@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {MatTab, MatTabGroup} from '@angular/material/tabs';
-import {ApexChart, ChartComponent} from 'ng-apexcharts';
+import {ChartComponent} from 'ng-apexcharts';
 import {example, Report} from '../types/types';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {MatIconButton} from '@angular/material/button';
@@ -17,23 +17,6 @@ import {
   MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
   MatTable
 } from '@angular/material/table';
-
-export interface ChartOptions {
-  chart: ApexChart;
-  responsive: ApexResponsive[];
-}
-export interface TimelineChartOptions {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-}
-export interface CategoryChartOptions {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  plotOptions: ApexPlotOptions;
-}
 
 @Component({
   selector: 'app-dashboard',
@@ -70,32 +53,9 @@ export class DashboardComponent implements OnInit {
   report: Report | undefined = example;
   error: string | undefined = undefined;
   isDownloaded = false;
-  displayedColumns = ["name", "basline", "baseline_high_date", "baseline_low_date"]
+  displayedColumns = ["name", "baseline", "baseline_high_date", "baseline_low_date"]
 
-  pieChartOptions: Partial<ChartOptions> = {
-    chart: {type: "pie", width: 380,},
-    responsive: [
-      {
-        breakpoint: 480,
-        options: {chart: {width: 300}, legend: {position: "bottom"}},
-      },
-    ],
-  };
-  timelineChartOptions: Partial<TimelineChartOptions> = {
-    series: [{name: "F1", data: [15, 20]}, {name: "F2", data: [35, 10, 3]}, {name: "F3", data: [35, 33]}],
-    chart: { type: "line", height: 350 },
-    xaxis: { categories: ["2024", "2025", "2026"] },
-    stroke: { curve: "smooth" },
-  };
-  categoryChartOptions: Partial<CategoryChartOptions> = {
-    series: [{name: "F1", data: [15, 20]}, {name: "F2", data: [35, 10]}],
-    chart: { type: "bar", height: 350 },
-    plotOptions: { bar: { borderRadius: 4, horizontal: false } },
-    xaxis: { categories: ["HTTML", "CSS"] },
-  };
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     const params = new URL(window.location.href).searchParams;
@@ -128,6 +88,14 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  getAdoptionTimelineSeries() {
+    return this.report!.charts.featureAdoptionTimeline.map(d => d.number);
+  }
+
+  getAdoptionTimelineXAxis() {
+    return this.report!.charts.featureAdoptionTimeline.map(d => d.year.toString());
+  }
+
   getHealthColor(percent: number): string {
     if (percent >= 80) return '#22c55e'; // green
     if (percent >= 60) return '#eab308'; // yellow
@@ -135,7 +103,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteReport() {
-
+    // TODO: delete report
   }
 
 }

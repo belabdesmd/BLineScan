@@ -17,13 +17,10 @@ interface Feature {
 }
 
 export interface Report {
-  metadata: {
-    projectName: string,
-    createdAt: number,
-  }
   summary: Summary,
   charts: {
     baselineDistribution: {
+      experimental: number,
       low: number,
       medium: number,
       high: number
@@ -48,11 +45,7 @@ export interface Report {
   }
 }
 
-export const example : Report = {
-  metadata: {
-    projectName: "My Sample Project",
-    createdAt: Date.now()
-  },
+export const example: Report = {
   summary: {
     featureCount: 42,
     baselineCoverage: 76,
@@ -62,16 +55,17 @@ export const example : Report = {
   },
   charts: {
     baselineDistribution: {
+      experimental: 1,
       low: 8,
       medium: 12,
       high: 22
     },
     featureAdoptionTimeline: [
-      { year: 2016, number: 2 },
-      { year: 2018, number: 4 },
-      { year: 2020, number: 9 },
-      { year: 2022, number: 15 },
-      { year: 2024, number: 12 }
+      {year: 2016, number: 2},
+      {year: 2018, number: 4},
+      {year: 2020, number: 9},
+      {year: 2022, number: 15},
+      {year: 2024, number: 12}
     ],
     featureCategoryBreakdown: {
       html: 25,

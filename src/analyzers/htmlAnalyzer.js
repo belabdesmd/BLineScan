@@ -1,7 +1,9 @@
 import fs from "fs";
 import {features} from "web-features";
 import {parse} from "node-html-parser";
-import {aggregateSupport, getEarliestDate, lowestBaseline} from "../utils/baselineSummarizer.js";
+import {
+    getBaselineHighPercentage, getEarliestBaselineDate, getLatestBaselineDate,
+} from "../utils/baselineSummarizer.js";
 
 // ----------------------------------------------------- DECLARATIONS
 const htmlFeatures = Object.entries(features)
@@ -16,6 +18,7 @@ const htmlFeatures = Object.entries(features)
 
 // ----------------------------------------------------- MAIN
 const rules = buildRules();
+
 export function analyzeHtml(filePath) {
     const html = fs.readFileSync(filePath, "utf-8");
     const root = parse(html);
@@ -53,10 +56,11 @@ export function analyzeHtml(filePath) {
     traverse(root);
     return {
         summary: {
-            detected_features: foundFeatures.size,
-            baseline_level: lowestBaseline([...foundFeatures]),
-            support_summary: aggregateSupport([...foundFeatures]),
-            baseline_lowest_date: getEarliestDate([...foundFeatures])
+            featureCount: foundFeatures.size,
+            baselineCoverage: getBaselineHighPercentage([...foundFeatures]),
+            earliestFeatureAdoption: getEarliestBaselineDate([...foundFeatures]),
+            latestFeatureAdoption: getLatestBaselineDate([...foundFeatures]),
+            nonBaselineFeatureCount: [...foundFeatures].filter(f => !f.status?.baseline).length
         },
         features: [...foundFeatures]
     };

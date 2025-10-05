@@ -43,6 +43,15 @@ mat-toolbar {
   margin: 8px;
 }
 
+.chart-body {
+  height: 100%;
+  display: flex;
+}
+
+.chart-body apx-chart {
+  margin: auto;
+}
+
 .summary-card {
   display: flex;
   width: 100%;

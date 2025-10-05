@@ -26,7 +26,7 @@ export async function scan(target, options) {
     }
 
     // Save Report Locally
-    const filePath = saveReport({overall: getOverallSummary(result.html, result.css), ...result});
+    const filePath = saveReport({...getOverallSummary(result.html, result.css), ...result});
     if (remote !== undefined) {
         const hours = remote === true || remote === "" ? 24 : Number(remote);
         if (isNaN(hours) || hours <= 0) {
