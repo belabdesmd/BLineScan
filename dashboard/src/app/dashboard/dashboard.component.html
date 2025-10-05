@@ -1,1 +1,255 @@
-<p>dashboard works!</p>
+<div class="container">
+  <mat-toolbar>
+    <span class="topbar-logo">BLineScan</span>
+    <span class="spacer"></span>
+    <div class="navigation-buttons">
+      <p>Report for {{report!.metadata.projectName}} on {{report!.metadata.createdAt}}</p>
+      <button mat-icon-button [disabled]="isDownloaded" (click)="deleteReport()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <mat-tab-group>
+    <mat-tab label="Overview">
+      <mat-card class="summary" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Overview</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="summary-card">
+          <!-- Left: Details -->
+          <div class="summary-details">
+            <div class="summary-item">
+              <span class="label">Feature Count</span>
+              <span class="value">{{ report!.summary.featureCount }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Baseline Coverage</span>
+              <span class="value">{{ report!.summary.baselineCoverage }}%</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Earliest Feature Adoption</span>
+              <span class="value">{{ report!.summary.earliestFeatureAdoption }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Latest Feature Adoption</span>
+              <span class="value">{{ report!.summary.latestFeatureAdoption }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Non-Baseline Features</span>
+              <span class="value">{{ report!.summary.nonBaselineFeatureCount }}</span>
+            </div>
+          </div>
+
+          <!-- Right: Circle Progress -->
+          <div class="summary-health">
+            <circle-progress
+              [percent]="99"
+              [radius]="60"
+              [outerStrokeWidth]="10"
+              [innerStrokeWidth]="8"
+              [outerStrokeColor]="getHealthColor(99)"
+              [innerStrokeColor]="'#e6e6e6'"
+              [animation]="true"
+              [animationDuration]="400"
+              [showTitle]="false"
+              [showUnits]="false"
+              [showSubtitle]="false"
+            >
+            </circle-progress>
+            <div class="circle-center">
+              <div class="health-label">Health</div>
+              <div class="health-value">{{ 99 }}%</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="charts">
+        <mat-card class="chart" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Baseline Distribution</mat-card-title>
+            <mat-card-subtitle>Visualizes the proportion of features with low, medium, and high baseline status.</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <apx-chart
+              [series]="[report!.charts.baselineDistribution.low, report!.charts.baselineDistribution.medium, report!.charts.baselineDistribution.high]"
+              [labels]="['Low', 'Medium', 'High']"
+              [chart]="pieChartOptions.chart!"
+              [responsive]="pieChartOptions.responsive!"></apx-chart>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="chart" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Feature Adoption Timeline</mat-card-title>
+            <mat-card-subtitle>Shows how many features reached baseline support per year.</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <apx-chart [series]="timelineChartOptions.series!"
+                       [chart]="timelineChartOptions.chart!"
+                       [xaxis]="timelineChartOptions.xaxis!"
+                       [stroke]="timelineChartOptions.stroke!"></apx-chart>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="chart" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Feature Category Breakdown</mat-card-title>
+            <mat-card-subtitle>Compares how many features were detected in HTML vs CSS.</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <apx-chart [series]="categoryChartOptions.series!"
+                       [chart]="categoryChartOptions.chart!"
+                       [xaxis]="categoryChartOptions.xaxis!"
+                       [plotOptions]="categoryChartOptions.plotOptions!"></apx-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="HTML">
+      <mat-card class="summary" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>HTML Sources Overview</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="summary-card">
+          <!-- Left: Details -->
+          <div class="summary-details">
+            <div class="summary-item">
+              <span class="label">Feature Count</span>
+              <span class="value">{{ report!.html.summary.featureCount }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Baseline Coverage</span>
+              <span class="value">{{ report!.html.summary.baselineCoverage }}%</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Earliest Feature Adoption</span>
+              <span class="value">{{ report!.html.summary.earliestFeatureAdoption }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Latest Feature Adoption</span>
+              <span class="value">{{ report!.html.summary.latestFeatureAdoption }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Non-Baseline Features</span>
+              <span class="value">{{ report!.html.summary.nonBaselineFeatureCount }}</span>
+            </div>
+          </div>
+
+          <!-- Right: Circle Progress -->
+          <div class="summary-health">
+            <circle-progress
+              [percent]="99"
+              [radius]="60"
+              [outerStrokeWidth]="10"
+              [innerStrokeWidth]="8"
+              [outerStrokeColor]="getHealthColor(99)"
+              [innerStrokeColor]="'#e6e6e6'"
+              [animation]="true"
+              [animationDuration]="400"
+              [showTitle]="false"
+              [showUnits]="false"
+              [showSubtitle]="false"
+            >
+            </circle-progress>
+            <div class="circle-center">
+              <div class="health-label">Health</div>
+              <div class="health-value">{{ 99 }}%</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <table mat-table [dataSource]="report!.html.features" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="basline">
+          <th mat-header-cell *matHeaderCellDef>Baseline</th>
+          <td mat-cell *matCellDef="let element"> {{element.status.baseline}} </td>
+        </ng-container>
+        <ng-container matColumnDef="baseline_high_date">
+          <th mat-header-cell *matHeaderCellDef>Baseline High</th>
+          <td mat-cell *matCellDef="let element"> {{element.status.baseline_high_date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="baseline_low_date">
+          <th mat-header-cell *matHeaderCellDef>Baseline Low</th>
+          <td mat-cell *matCellDef="let element"> {{element.status.baseline_low_date}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-tab>
+    <mat-tab label="CSS">
+      <mat-card class="summary" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>CSS Sources Overview</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="summary-card">
+          <div class="summary-details">
+            <div class="summary-item">
+              <span class="label">Feature Count</span>
+              <span class="value">{{ report!.css.summary.featureCount }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Baseline Coverage</span>
+              <span class="value">{{ report!.css.summary.baselineCoverage }}%</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Earliest Feature Adoption</span>
+              <span class="value">{{ report!.css.summary.earliestFeatureAdoption }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Latest Feature Adoption</span>
+              <span class="value">{{ report!.css.summary.latestFeatureAdoption }}</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Non-Baseline Features</span>
+              <span class="value">{{ report!.css.summary.nonBaselineFeatureCount }}</span>
+            </div>
+          </div>
+          <div class="summary-health">
+            <circle-progress
+              [percent]="99"
+              [radius]="60"
+              [outerStrokeWidth]="10"
+              [innerStrokeWidth]="8"
+              [outerStrokeColor]="getHealthColor(99)"
+              [innerStrokeColor]="'#e6e6e6'"
+              [animation]="true"
+              [animationDuration]="400"
+              [showTitle]="false"
+              [showUnits]="false"
+              [showSubtitle]="false"
+            >
+            </circle-progress>
+            <div class="circle-center">
+              <div class="health-label">Health</div>
+              <div class="health-value">{{ 99 }}%</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <table mat-table [dataSource]="report!.css.features" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="basline">
+          <th mat-header-cell *matHeaderCellDef>Baseline</th>
+          <td mat-cell *matCellDef="let element"> {{element.status.baseline}} </td>
+        </ng-container>
+        <ng-container matColumnDef="baseline_high_date">
+          <th mat-header-cell *matHeaderCellDef>Baseline High</th>
+          <td mat-cell *matCellDef="let element"> {{element.status.baseline_high_date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="baseline_low_date">
+          <th mat-header-cell *matHeaderCellDef>Baseline Low</th>
+          <td mat-cell *matCellDef="let element"> {{element.status.baseline_low_date}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
