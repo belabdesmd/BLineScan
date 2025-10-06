@@ -6,6 +6,7 @@ import path from "path";
 
 const router = Router();
 const uploadDir = path.join(process.cwd(), "uploads");
+const API_KEY = process.env.API_KEY;
 
 // Ensure uploads directory exists
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
@@ -20,8 +21,13 @@ const upload = multer({ storage });
 // POST /api/upload
 // Accepts a JSON report and an optional ?hours=number query param
 router.post("/", upload.single("file"), (req, res) => {
+    const key = req.headers["x-api-key"];
     const hours = Number(req.query.hours) || 24;
     const fileId = path.basename(req.file!.filename, ".json");
+
+    if (key !== API_KEY) {
+        return res.status(403).json({ error: "Unauthorized to upload file!" });
+    }
 
     // Store metadata file with expiry timestamp
     const expiresAt = Date.now() + hours * 60 * 60 * 1000;

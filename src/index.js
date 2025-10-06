@@ -79,8 +79,12 @@ export async function uploadReport(filePath, serverUrl, dashUrl, hours = 24) {
     formData.append("file", fileStream, path.basename(filePath));
 
     try {
+        const API_KEY = process.env.API_KEY
         const response = await axios.post(`${serverUrl}/api/upload?hours=${hours}`, formData, {
-            headers: {...formData.getHeaders()},
+            headers: {
+                "x-api-key": API_KEY,
+                ...formData.getHeaders()
+            },
         });
 
         const data = await response.data;
