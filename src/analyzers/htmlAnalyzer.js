@@ -2,6 +2,7 @@ import fs from "fs";
 import {features} from "web-features";
 import {parse} from "node-html-parser";
 import {
+    calculateBaselineHealth,
     getBaselineHighPercentage, getEarliestBaselineDate, getLatestBaselineDate,
 } from "../utils/baselineSummarizer.js";
 
@@ -60,7 +61,8 @@ export function analyzeHtml(filePath) {
             baselineCoverage: getBaselineHighPercentage([...foundFeatures]),
             earliestFeatureAdoption: getEarliestBaselineDate([...foundFeatures]),
             latestFeatureAdoption: getLatestBaselineDate([...foundFeatures]),
-            nonBaselineFeatureCount: [...foundFeatures].filter(f => !f.status?.baseline).length
+            nonBaselineFeatureCount: [...foundFeatures].filter(f => !f.status?.baseline).length,
+            baselineHealth: calculateBaselineHealth([...foundFeatures]),
         },
         features: [...foundFeatures]
     };

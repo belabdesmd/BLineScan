@@ -4,6 +4,7 @@ interface Summary {
   earliestFeatureAdoption: string, // earliest baseline_low_date
   latestFeatureAdoption: string, // latest baseline_low_date
   nonBaselineFeatureCount: number,
+  baselineHealth: number
 }
 
 interface Feature {
@@ -32,8 +33,7 @@ export interface Report {
     featureCategoryBreakdown: {
       html: number,
       css: number,
-    },
-    baselineHealth: number
+    }
   },
   html: {
     summary: Summary,
@@ -51,7 +51,8 @@ export const example: Report = {
     baselineCoverage: 76,
     earliestFeatureAdoption: "2016-03-15",
     latestFeatureAdoption: "2024-08-22",
-    nonBaselineFeatureCount: 10
+    nonBaselineFeatureCount: 10,
+    baselineHealth: 34
   },
   charts: {
     baselineDistribution: {
@@ -70,8 +71,7 @@ export const example: Report = {
     featureCategoryBreakdown: {
       html: 25,
       css: 17
-    },
-    baselineHealth: 76
+    }
   },
   html: {
     summary: {
@@ -79,7 +79,8 @@ export const example: Report = {
       baselineCoverage: 80,
       earliestFeatureAdoption: "2016-03-15",
       latestFeatureAdoption: "2024-04-20",
-      nonBaselineFeatureCount: 5
+      nonBaselineFeatureCount: 5,
+      baselineHealth: 34
     },
     features: [
       {
@@ -126,7 +127,8 @@ export const example: Report = {
       baselineCoverage: 70,
       earliestFeatureAdoption: "2017-01-10",
       latestFeatureAdoption: "2023-11-08",
-      nonBaselineFeatureCount: 5
+      nonBaselineFeatureCount: 5,
+      baselineHealth: 34
     },
     features: [
       {

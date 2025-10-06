@@ -5,6 +5,7 @@ import {features} from "web-features";
 import scss from "postcss-scss";
 import less from "postcss-less";
 import {
+    calculateBaselineHealth,
     getBaselineHighPercentage,
     getEarliestBaselineDate,
     getLatestBaselineDate,
@@ -83,7 +84,8 @@ export function analyzeCss(filePath) {
             baselineCoverage: getBaselineHighPercentage([...foundFeatures]),
             earliestFeatureAdoption: getEarliestBaselineDate([...foundFeatures]),
             latestFeatureAdoption: getLatestBaselineDate([...foundFeatures]),
-            nonBaselineFeatureCount: [...foundFeatures].filter(f => !f.status?.baseline).length
+            nonBaselineFeatureCount: [...foundFeatures].filter(f => !f.status?.baseline).length,
+            baselineHealth: calculateBaselineHealth([...foundFeatures]),
         },
         features: [...foundFeatures]
     };

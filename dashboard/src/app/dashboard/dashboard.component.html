@@ -44,7 +44,7 @@
           <!-- Right: Circle Progress -->
           <div class="summary-health">
             <circle-progress
-              [percent]="99"
+              [percent]="report!.summary.baselineHealth"
               [radius]="60"
               [outerStrokeWidth]="10"
               [innerStrokeWidth]="8"
@@ -59,7 +59,7 @@
             </circle-progress>
             <div class="circle-center">
               <div class="health-label">Health</div>
-              <div class="health-value">{{ 99 }}%</div>
+              <div class="health-value">{{ report!.summary.baselineHealth }}%</div>
             </div>
           </div>
         </mat-card-content>
@@ -139,7 +139,7 @@
           <!-- Right: Circle Progress -->
           <div class="summary-health">
             <circle-progress
-              [percent]="99"
+              [percent]="report!.html.summary.baselineHealth"
               [radius]="60"
               [outerStrokeWidth]="10"
               [innerStrokeWidth]="8"
@@ -154,7 +154,7 @@
             </circle-progress>
             <div class="circle-center">
               <div class="health-label">Health</div>
-              <div class="health-value">{{ 99 }}%</div>
+              <div class="health-value">{{ report!.html.summary.baselineHealth }}%</div>
             </div>
           </div>
         </mat-card-content>
@@ -211,7 +211,7 @@
           </div>
           <div class="summary-health">
             <circle-progress
-              [percent]="99"
+              [percent]="report!.css.summary.baselineHealth"
               [radius]="60"
               [outerStrokeWidth]="10"
               [innerStrokeWidth]="8"
@@ -226,7 +226,7 @@
             </circle-progress>
             <div class="circle-center">
               <div class="health-label">Health</div>
-              <div class="health-value">{{ 99 }}%</div>
+              <div class="health-value">{{ report!.css.summary.baselineHealth }}%</div>
             </div>
           </div>
         </mat-card-content>

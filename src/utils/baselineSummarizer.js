@@ -28,7 +28,7 @@ function getBaselineDistribution(features) {
 
     // Convert counts to percentages
     for (const key in distribution) {
-        distribution[key] =  Math.round((distribution[key] / total) * 100 * 10) / 10;
+        distribution[key] = Math.round((distribution[key] / total) * 100 * 10) / 10;
     }
 
     return distribution;
@@ -56,6 +56,21 @@ export function getLatestBaselineDate(features) {
 
     const latest = new Date(Math.max(...validDates.map(d => d.getTime())));
     return latest.toISOString().split("T")[0];
+}
+
+export function calculateBaselineHealth(features) {
+    if (!features.length) return 0;
+
+    const weights = {high: 1.0, medium: 0.6, low: 0.3, experimental: 0.1};
+
+    let total = 0;
+    for (const f of features) {
+        const baseline = f.status.baseline?.toLowerCase() || "experimental";
+        total += weights[baseline] ?? 0.1;
+    }
+
+    // Average → scale to percentage
+    return Number(((total / features.length) * 100).toFixed(1));
 }
 
 function getFeatureAdoptionTimeline(features) {
@@ -90,13 +105,19 @@ function getFeatureCategoryBreakdown(htmlFeatures, cssFeatures) {
     const total = htmlCount + cssCount;
 
     if (total === 0) {
-        return { html: 0, css: 0 };
+        return {html: 0, css: 0};
     }
 
     return {
         html: Math.round((htmlCount / total) * 100 * 10) / 10,
         css: Math.round((cssCount / total) * 100 * 10) / 10,
     };
+}
+
+function calculateOverallHealth(htmlHealth, cssHealth, htmlCount, cssCount) {
+    const total = htmlCount + cssCount;
+    if (!total) return 0;
+    return Number(((htmlHealth * htmlCount + cssHealth * cssCount) / total).toFixed(1));
 }
 
 export function getOverallSummary(htmlReport, cssReport) {
@@ -106,7 +127,7 @@ export function getOverallSummary(htmlReport, cssReport) {
     // Weighted average for baseline coverage
     const baselineCoverage = totalFeatures ?
         Math.round(((htmlReport.summary.baselineCoverage * htmlReport.summary.featureCount
-                + cssReport.summary.baselineCoverage * cssReport.summary.featureCount) / totalFeatures * 10) / 10) : 0;
+            + cssReport.summary.baselineCoverage * cssReport.summary.featureCount) / totalFeatures * 10) / 10) : 0;
 
     // Earliest and latest feature adoption across both
     const earliestFeatureAdoption = [
@@ -134,7 +155,7 @@ export function getOverallSummary(htmlReport, cssReport) {
             baselineDistribution: getBaselineDistribution(features),
             featureAdoptionTimeline: getFeatureAdoptionTimeline(features),
             featureCategoryBreakdown: getFeatureCategoryBreakdown(htmlReport.features, cssReport.features),
-            baselineHealth: 1222
+            baselineHealth: calculateOverallHealth(htmlReport.summary.baselineHealth, cssReport.summary.baselineHealth, htmlReport.features.length, cssReport.features.length)
         }
     };
 }
