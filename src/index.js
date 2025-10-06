@@ -65,7 +65,7 @@ export function saveReport(report, projectRoot = process.cwd()) {
     const filePath = path.join(reportsDir, fileName);
 
     // Write JSON with pretty format
-    fs.cpSync("dashboard/dist/blinescan-dash/browser", ".baseline-reports", {recursive: true});
+    fs.cpSync("node_modules/blinescan/dashboard/dist/blinescan-dash/browser", ".baseline-reports", {recursive: true});
     fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
 
     console.log(`✅ Baseline report saved at: ${filePath}`);
