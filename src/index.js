@@ -3,11 +3,12 @@ import path from "path";
 import http from "http";
 import serveStatic from "serve-static";
 import finalhandler from "finalhandler";
-import fetch, {FormData} from "node-fetch";
+import FormData from 'form-data';
 import {walkFiles} from "./utils/fileWalker.js";
 import {analyzeHtml} from "./analyzers/htmlAnalyzer.js";
 import {analyzeCss} from "./analyzers/cssAnalyzer.js";
 import {getOverallSummary} from "./utils/baselineSummarizer.js";
+import axios from "axios";
 
 export async function scan(options) {
     const {remote, src} = options;
@@ -78,17 +79,11 @@ export async function uploadReport(filePath, serverUrl, dashUrl, hours = 24) {
     formData.append("file", fileStream, path.basename(filePath));
 
     try {
-        const response = await fetch(`${serverUrl}/api/upload?hours=${hours}`, {
-            method: "POST",
-            body: formData
+        const response = await axios.post(`${serverUrl}/api/upload?hours=${hours}`, formData, {
+            headers: {...formData.getHeaders()},
         });
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Upload failed: ${response.status} ${errorText}`);
-        }
-
-        const data = await response.json();
+        const data = await response.data;
         console.log(`✅ Uploaded successfully!`);
         console.log(`🆔 Report ID: ${data.id}`);
         console.log(`⏱ Expires in: ${data.expiresInHours}h`);
