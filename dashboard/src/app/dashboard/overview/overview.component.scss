@@ -1,0 +1,53 @@
+.summary {
+  margin: 8px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.label {
+  font-size: 16px;
+}
+
+.value {
+  font-weight: bold;
+}
+
+.summary-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-item {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 4px;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-health {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 64px;
+}
+
+.health-label {
+  font-weight: bold;
+  margin: 0;
+}
+
+.circle-center {
+  position: absolute;
+  text-align: center;
+}

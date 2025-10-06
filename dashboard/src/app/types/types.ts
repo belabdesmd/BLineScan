@@ -1,4 +1,4 @@
-interface Summary {
+export interface Summary {
   featureCount: number,
   baselineCoverage: number, // percentage of features with baseline `high`
   earliestFeatureAdoption: string, // earliest baseline_low_date
@@ -7,7 +7,7 @@ interface Summary {
   baselineHealth: number
 }
 
-interface Feature {
+export interface Feature {
   name: string,
   description: string,
   status: {

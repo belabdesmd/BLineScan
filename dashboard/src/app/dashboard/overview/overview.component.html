@@ -1,0 +1,53 @@
+<mat-card class="summary" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title class="mat-headline-large" style="font-weight: bold;">Overview</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="summary-card">
+    <!-- Left: Details -->
+    <div class="summary-details">
+      <div class="summary-item">
+        <span class="label">Feature Count</span>
+        <span class="value">{{ summary!.featureCount }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Baseline Coverage</span>
+        <span class="value">{{ summary!.baselineCoverage }}%</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Earliest Feature Adoption</span>
+        <span class="value">{{ summary!.earliestFeatureAdoption }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Latest Feature Adoption</span>
+        <span class="value">{{ summary!.latestFeatureAdoption }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Non-Baseline Features</span>
+        <span class="value">{{ summary!.nonBaselineFeatureCount }}</span>
+      </div>
+    </div>
+
+    <!-- Right: Circle Progress -->
+    <div class="summary-health">
+      <circle-progress
+        [percent]="summary!.baselineHealth"
+        [radius]="100"
+        [outerStrokeWidth]="10"
+        [outerStrokeColor]="getHealthColor(summary!.baselineHealth)"
+        [innerStrokeColor]="'#e6e6e6'"
+        [animation]="true"
+        [animationDuration]="400"
+        [showTitle]="false"
+        [showUnits]="false"
+        [showSubtitle]="false"
+      >
+      </circle-progress>
+      <div class="circle-center">
+        <div class="health-label mat-headline-medium">Health</div>
+        <div class="health-value mat-headline-small" [style]="'color: ' + getHealthColor(summary!.baselineHealth)">
+          {{ summary!.baselineHealth }}%
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
