@@ -43,10 +43,6 @@ th, .name {
   justify-content: space-between;
   align-items: center;
   margin: 16px 16px;
-
-  .filter-select {
-    border-radius: 16px;
-  }
 }
 
 .badge {
@@ -73,3 +69,13 @@ th, .name {
   }
 }
 
+.table-error {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 16px 0;
+}
+
+#spacer {
+  height: 24px;
+}

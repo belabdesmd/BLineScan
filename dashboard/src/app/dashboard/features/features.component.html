@@ -3,7 +3,6 @@
   <mat-form-field appearance="outline" class="filter-select">
     <mat-label>Filter by baseline</mat-label>
     <mat-select [(value)]="selectedBaselines" multiple (selectionChange)="applyBaselineFilter()">
-
       @for (option of baselineOptions; track option) {
         <mat-option [value]="option">
           {{ option }}
@@ -38,3 +37,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+@if (filteredFeatures.length == 0) {
+  <span class="table-error">There's no features detected!</span>
+}
+<div id="spacer"></div>
