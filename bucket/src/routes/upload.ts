@@ -1,6 +1,6 @@
-import { Router } from "express";
+import {Router} from "express";
 import multer from "multer";
-import { v4 as uuidv4 } from "uuid";
+import {v4 as uuidv4} from "uuid";
 import fs from "fs";
 import path from "path";
 
@@ -16,25 +16,23 @@ const storage = multer.diskStorage({
     filename: (_, file, cb) => cb(null, `${uuidv4()}.json`)
 });
 
-const upload = multer({ storage });
+const upload = multer({
+    storage,
+    limits: {fileSize: 10 * 1024 * 1024} // 10 MB limit
+});
 
 // POST /api/upload
 // Accepts a JSON report and an optional ?hours=number query param
 router.post("/", upload.single("file"), (req, res) => {
-    const key = req.headers["x-api-key"];
     const hours = Number(req.query.hours) || 24;
     const fileId = path.basename(req.file!.filename, ".json");
-
-    if (key !== API_KEY) {
-        return res.status(403).json({ error: "Unauthorized to upload file!" });
-    }
 
     // Store metadata file with expiry timestamp
     const expiresAt = Date.now() + hours * 60 * 60 * 1000;
     const metaPath = path.join(uploadDir, `${fileId}.meta.json`);
-    fs.writeFileSync(metaPath, JSON.stringify({ expiresAt }));
+    fs.writeFileSync(metaPath, JSON.stringify({expiresAt}));
 
-    res.json({ id: fileId, expiresInHours: hours });
+    res.json({id: fileId, expiresInHours: hours});
 });
 
 export default router;

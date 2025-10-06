@@ -5,9 +5,15 @@
   "bin": {
     "blinescan": "bin/cli.js"
   },
+  "files": [
+    "bin",
+    "src",
+    "dashboard/dist"
+  ],
   "dependencies": {
     "axios": "^1.12.2",
     "commander": "^14.0.1",
+    "express-rate-limit": "^8.1.0",
     "finalhandler": "^2.1.0",
     "form-data": "^4.0.4",
     "node-fetch": "^3.3.2",
