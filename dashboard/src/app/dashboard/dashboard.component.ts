@@ -97,8 +97,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getHealthColor(percent: number): string {
-    if (percent >= 80) return '#22c55e'; // green
-    if (percent >= 60) return '#eab308'; // yellow
+    if (percent >= 70) return '#22c55e'; // green
+    if (percent >= 50) return '#eab308'; // yellow
     return '#ef4444'; // red
   }
 
