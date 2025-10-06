@@ -10,14 +10,17 @@ program
     .version("0.0.1");
 
 program
-    .command("scan [target]")
     .description("Run a baseline index")
+    .option(
+        "--src [target]",
+        "Path to the source directory to analyze and generate a Baseline report from"
+    )
     .option(
         "--remote [hours]",
         "Upload the report for remote access (optionally specify number of hours, defaults to 24)"
     )
-    .action((target, options) => {
-        scan(target, options);
+    .action((options) => {
+        scan(options);
     });
 
 program.parse(process.argv);

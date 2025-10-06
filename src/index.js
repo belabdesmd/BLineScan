@@ -9,9 +9,9 @@ import {analyzeHtml} from "./analyzers/htmlAnalyzer.js";
 import {analyzeCss} from "./analyzers/cssAnalyzer.js";
 import {getOverallSummary} from "./utils/baselineSummarizer.js";
 
-export async function scan(target, options) {
-    const dir = target ? path.resolve(target) : process.cwd();
-    const {remote} = options;
+export async function scan(options) {
+    const {remote, src} = options;
+    const dir = src ? path.resolve(src) : process.cwd();
 
     console.log(`🔍 Scanning: ${dir}`);
 
