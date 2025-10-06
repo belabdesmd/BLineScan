@@ -8,6 +8,7 @@ import {example, Report} from '../types/types';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {MatIconButton} from '@angular/material/button';
 import {MatIconModule} from "@angular/material/icon";
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {
   MatCell,
   MatCellDef,
@@ -17,6 +18,7 @@ import {
   MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
   MatTable
 } from '@angular/material/table';
+import {NgClass, TitleCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,7 +44,10 @@ import {
     MatHeaderRow,
     MatRow,
     MatRowDef,
-    MatHeaderRowDef
+    MatHeaderRowDef,
+    MatTooltipModule,
+    NgClass,
+    TitleCasePipe
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
