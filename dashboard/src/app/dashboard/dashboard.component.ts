@@ -10,6 +10,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {OverviewComponent} from './overview/overview.component';
 import {FeaturesComponent} from './features/features.component';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -69,7 +70,7 @@ export class DashboardComponent implements OnInit {
         this.timelineXAxis = {categories: this.report!.charts.featureAdoptionTimeline.map(d => d.year.toString())};
       }).catch(err => (this.error = String(err)));
     } else {
-      const apiUrl = `https://blinescan-bucket.belfodil.me/api/files/${file}`;
+      const apiUrl = `${environment.bucketUrl}/${file}`;
       this.http.get(apiUrl).subscribe({
         next: (data) => {
           this.report = data as Report;

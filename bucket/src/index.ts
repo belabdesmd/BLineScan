@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import path from "path";
 import {fileURLToPath} from "url";
 import uploadRouter from "./routes/upload.js";

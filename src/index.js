@@ -9,6 +9,7 @@ import {analyzeHtml} from "./analyzers/htmlAnalyzer.js";
 import {analyzeCss} from "./analyzers/cssAnalyzer.js";
 import {getOverallSummary} from "./utils/baselineSummarizer.js";
 import axios from "axios";
+import {fileURLToPath} from "url";
 
 export async function scan(options) {
     const {remote, src} = options;
@@ -38,7 +39,7 @@ export async function scan(options) {
         console.log(`🌐 Remote upload enabled. Expiration in ${hours} hour(s).`);
 
         // Upload report!
-        await uploadReport(filePath, "https://blinescan-bucket.belfodil.me", "https://blinescan.belfodil.me", hours);
+        await uploadReport(filePath, hours);
     } else {
         // Start Dashboard Locally
         const root = path.join(process.cwd(), ".baseline-reports");
@@ -64,8 +65,13 @@ export function saveReport(report, projectRoot = process.cwd()) {
     const fileName = `report-${new Date().toISOString().replace(/[:T]/g, "-").split(".")[0]}.json`;
     const filePath = path.join(reportsDir, fileName);
 
+    //
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const rootDir = path.resolve(__dirname, '..');
+
     // Write JSON with pretty format
-    fs.cpSync("node_modules/blinescan/dashboard/dist/blinescan-dash/browser", ".baseline-reports", {recursive: true});
+    fs.cpSync(path.join(rootDir, 'dashboard/dist/blinescan-dash/browser'), ".baseline-reports", {recursive: true});
     fs.writeFileSync(filePath, JSON.stringify(report, null, 2));
 
     console.log(`✅ Baseline report saved at: ${filePath}`);
@@ -73,13 +79,13 @@ export function saveReport(report, projectRoot = process.cwd()) {
     return filePath;
 }
 
-export async function uploadReport(filePath, serverUrl, dashUrl, hours = 24) {
+export async function uploadReport(filePath, hours = 24) {
     const fileStream = fs.createReadStream(filePath);
     const formData = new FormData();
     formData.append("file", fileStream, path.basename(filePath));
 
     try {
-        const response = await axios.post(`${serverUrl}/api/upload?hours=${hours}`, formData, {
+        const response = await axios.post(`${process.env.BUCKET_URL}/api/upload?hours=${hours}`, formData, {
             headers: {...formData.getHeaders()},
         });
 
@@ -87,7 +93,7 @@ export async function uploadReport(filePath, serverUrl, dashUrl, hours = 24) {
         console.log(`✅ Uploaded successfully!`);
         console.log(`🆔 Report ID: ${data.id}`);
         console.log(`⏱ Expires in: ${data.expiresInHours}h`);
-        console.log(`🌍 Remote URL: ${dashUrl}?file=${data.id}`);
+        console.log(`🌍 Remote URL: ${process.env.DASHBOARD_URL}?file=${data.id}`);
         return data;
     } catch (err) {
         console.error("❌ Failed to upload report:", err.message);
