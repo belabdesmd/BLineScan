@@ -14,7 +14,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {NgClass, TitleCasePipe} from '@angular/common';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
-import {MatCardTitle} from '@angular/material/card';
 
 @Component({
   selector: 'app-features',
@@ -41,7 +40,7 @@ import {MatCardTitle} from '@angular/material/card';
   styleUrl: './features.component.scss'
 })
 export class FeaturesComponent implements OnChanges {
-  baselineOptions = ['Experimental', 'Low', 'Medium', 'High'];
+  baselineOptions = ['Experimental', 'Low', 'High'];
   displayedColumns = ["name", "baseline", "baseline_high_date", "baseline_low_date"]
   selectedBaselines: string[] = []
   @Input() features: Feature[] | undefined;
@@ -58,7 +57,7 @@ export class FeaturesComponent implements OnChanges {
     }
 
     this.filteredFeatures = this.features!.filter(f =>
-      this.selectedBaselines.map((b => b.toLowerCase())).includes(f.status.baseline)
+      this.selectedBaselines.map((b => b.toLowerCase())).includes(!f.status.baseline ? "experimental" : f.status.baseline)
     );
   }
 }

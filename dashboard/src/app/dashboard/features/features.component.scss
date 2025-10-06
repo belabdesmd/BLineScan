@@ -13,11 +13,7 @@
 
 /* === Status Colors === */
 .baseline-badge.low {
-  background-color: #e57373; /* soft red */
-}
-
-.baseline-badge.medium {
-  background-color: #ffb74d; /* amber/orange */
+  background-color: #ffb74d; /* soft red */
 }
 
 .baseline-badge.high {
@@ -25,7 +21,7 @@
 }
 
 .baseline-badge.experimental {
-  background-color: #90a4ae; /* gray-blue */
+  background-color: #e57373; /* gray-blue */
 }
 
 /* Optional hover glow */
@@ -56,16 +52,12 @@ th, .name {
     background-color: #4caf50;
   }
 
-  &.medium {
+  &.low {
     background-color: #ff9800;
   }
 
-  &.low {
-    background-color: #f44336;
-  }
-
   &.experimental {
-    background-color: #9c27b0;
+    background-color: #f44336;
   }
 }
 

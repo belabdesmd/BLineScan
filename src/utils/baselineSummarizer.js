@@ -12,7 +12,6 @@ export function getBaselineHighPercentage(features) {
 function getBaselineDistribution(features) {
     const distribution = {
         low: 0,
-        medium: 0,
         high: 0,
         experimental: 0, // means undefined/null baseline
     };
@@ -23,7 +22,6 @@ function getBaselineDistribution(features) {
     for (const feature of features) {
         const level = feature.status && feature.status.baseline;
         if (level === "low") distribution.low++;
-        else if (level === "medium") distribution.medium++;
         else if (level === "high") distribution.high++;
         else distribution.experimental++;
     }
@@ -63,11 +61,11 @@ export function getLatestBaselineDate(features) {
 export function calculateBaselineHealth(features) {
     if (!features.length) return 0;
 
-    const weights = {high: 1.0, medium: 0.6, low: 0.3, experimental: 0.1};
+    const weights = {high: 1.0, low: 0.4, experimental: 0.1};
 
     let total = 0;
     for (const f of features) {
-        const baseline = f.status.baseline?.toLowerCase() || "experimental";
+        const baseline = !f.status.baseline ? "experimental" : f.status.baseline.toLowerCase();
         total += weights[baseline] ?? 0.1;
     }
 
@@ -155,13 +153,13 @@ export function getOverallSummary(htmlReport, cssReport) {
             baselineCoverage: baselineCoverage,
             earliestFeatureAdoption: earliestFeatureAdoption,
             latestFeatureAdoption: latestFeatureAdoption,
-            nonBaselineFeatureCount: nonBaselineFeatureCount
+            nonBaselineFeatureCount: nonBaselineFeatureCount,
+            baselineHealth: calculateOverallHealth(htmlReport.summary.baselineHealth, cssReport.summary.baselineHealth, htmlReport.features.length, cssReport.features.length)
         },
         charts: {
             baselineDistribution: getBaselineDistribution(features),
             featureAdoptionTimeline: getFeatureAdoptionTimeline(features),
-            featureCategoryBreakdown: getFeatureCategoryBreakdown(htmlReport.features, cssReport.features),
-            baselineHealth: calculateOverallHealth(htmlReport.summary.baselineHealth, cssReport.summary.baselineHealth, htmlReport.features.length, cssReport.features.length)
+            featureCategoryBreakdown: getFeatureCategoryBreakdown(htmlReport.features, cssReport.features)
         }
     };
 }

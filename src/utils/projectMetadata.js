@@ -1,9 +1,12 @@
+import path from "path";
+import fs from "fs";
+
 export function findProjectName(startDir = process.cwd()) {
     let dir = startDir;
     let pkgPath = null;
     while (true) {
-        const pkg = join(dir, 'package.json');
-        if (existsSync(pkg)) {
+        const pkg = path.join(dir, 'package.json');
+        if (fs.existsSync(pkg)) {
             pkgPath = pkg;
             break;
         }
@@ -17,7 +20,7 @@ export function findProjectName(startDir = process.cwd()) {
         console.error('❌ No package.json found in this directory or any parent directory.');
         process.exit(1);
     }
-    const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
     return pkg.name;
 }

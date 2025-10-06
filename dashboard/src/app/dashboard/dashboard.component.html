@@ -24,15 +24,15 @@
             <mat-card-header>
               <mat-card-title class="mat-headline-small" style="font-weight: bold; margin: 0">Baseline Distribution
               </mat-card-title>
-              <mat-card-subtitle class="mat-body-medium">Visualizes the proportion of features with low, medium, and high
+              <mat-card-subtitle class="mat-body-medium">Visualizes the proportion of features with low, high and experimental
                 baseline status.
               </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="chart-body">
               <apx-chart
                 [theme]="{mode: 'dark'}"
-                [series]="[report!.charts.baselineDistribution.experimental, report!.charts.baselineDistribution.low, report!.charts.baselineDistribution.medium, report!.charts.baselineDistribution.high]"
-                [labels]="['Experimental', 'Low', 'Medium', 'High']"
+                [series]="[report!.charts.baselineDistribution.experimental, report!.charts.baselineDistribution.low, report!.charts.baselineDistribution.high]"
+                [labels]="['Experimental', 'Low', 'High']"
                 [chart]="{type: 'pie', width: 380, background: 'transparent'}"
                 [responsive]="[{breakpoint: 480, options: {chart: {width: 300}, legend: {position: 'top'}}}]"></apx-chart>
             </mat-card-content>
@@ -81,6 +81,7 @@
         <app-overview [summary]="report!.css.summary"/>
         <app-features [features]="report!.css.features"/>
       </mat-tab>
+      <mat-tab label="Javascript (Coming Soon!)" disabled/>
     </mat-tab-group>
   }
 </div>

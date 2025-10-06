@@ -14,18 +14,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({
-    origin: "https://blinescan.belfodil.me/",
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"]
-}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 // Routes
 app.use("/api/upload", rateLimit({
-    windowMs: 15 * 60 * 1000, limit: 50,
+    windowMs: 15 * 60 * 1000,
+    max: 50,
     message: "Too many uploads from this IP, please try again later."
 }));
 app.use("/api/upload", uploadRouter);
