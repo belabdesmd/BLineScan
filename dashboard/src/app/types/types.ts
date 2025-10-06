@@ -18,6 +18,10 @@ export interface Feature {
 }
 
 export interface Report {
+  metadata: {
+    name: string,
+    createdAt: string,
+  },
   summary: Summary,
   charts: {
     baselineDistribution: {
@@ -46,6 +50,10 @@ export interface Report {
 }
 
 export const example: Report = {
+  metadata: {
+    name: "Project Name",
+    createdAt: "2025-12-11"
+  },
   summary: {
     featureCount: 42,
     baselineCoverage: 76,

@@ -2,7 +2,9 @@
   <mat-toolbar>
     <span class="topbar-logo">BLineScan</span>
     <span class="spacer"></span>
-    <div class="navigation-buttons">
+    <div class="project-details">
+      <span class="mat-body-large detail"><span>Project Name:</span> {{report?.metadata?.name || 'N/A'}}</span>
+      <span class="mat-body-large  detail"><span>Created At:</span> {{report?.metadata?.createdAt || 'N/A'}}</span>
     </div>
   </mat-toolbar>
   @if (loading) {

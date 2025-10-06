@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
   // -------------------------------- Data
   loading = false;
   report: Report | undefined = example;
-  error: string | undefined = undefined;
+  error: string | undefined;
 
   // -------------------------------- Charts Data
   dataLabels: ApexDataLabels = {enabled: true, formatter: (val: number) => `${val}%`};
@@ -52,8 +52,9 @@ export class DashboardComponent implements OnInit {
     const file = params.get('file');
 
     // Fetch Report
-    if (!file) this.error = "Missing report identifier. Please open a valid report or provide a valid ID in the URL."
-    else if (file.endsWith('.json')) {
+    if (!file) {
+      // TODO: this.error = "Missing report identifier. Please open a valid report or provide a valid ID in the URL."
+    } else if (file.endsWith('.json')) {
       fetch(file).then(res => {
         this.loading = false;
         if (!res.ok) throw new Error('Failed to load report: ' + res.status);

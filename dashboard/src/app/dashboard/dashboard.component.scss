@@ -8,7 +8,7 @@
 mat-toolbar {
   background-color: transparent;
   margin: 48px 0;
-  padding: 0 16px;
+  padding: 0 32px;
 }
 
 .spacer {
@@ -17,15 +17,18 @@ mat-toolbar {
 
 .topbar-logo {
   font-size: 80px;
-  margin-left: 16px;
   color: var(--mat-sys-secondary);
   font-family: "Bebas Neue", sans-serif;
 }
 
-.navigation-buttons {
+.project-details {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+}
+
+.detail span {
+  font-weight: bold;
+  color: var(--mat-sys-secondary);
 }
 
 .loading-container {

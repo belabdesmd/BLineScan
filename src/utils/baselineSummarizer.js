@@ -1,3 +1,5 @@
+import {findProjectName, getCurrentDateString} from "./projectMetadata.js";
+
 export function getBaselineHighPercentage(features) {
     if (!features.length) return 0;
 
@@ -144,6 +146,10 @@ export function getOverallSummary(htmlReport, cssReport) {
     const nonBaselineFeatureCount = htmlReport.summary.nonBaselineFeatureCount + cssReport.summary.nonBaselineFeatureCount;
 
     return {
+        metadata: {
+            name: findProjectName(),
+            createdAt: getCurrentDateString(),
+        },
         summary: {
             featureCount: totalFeatures,
             baselineCoverage: baselineCoverage,
