@@ -59,7 +59,7 @@ BLineScan/
 
 ---
 
-## 🔧 Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 
@@ -122,7 +122,7 @@ To configure automatic deletion time or other behavior, check the configuration 
 
 ---
 
-## 🖥Dashboard (`/dashboard`)
+## Dashboard (`/dashboard`)
 
 The **dashboard** visualizes the generated reports with charts and tables for HTML, CSS, and (soon) JS.
 
@@ -195,7 +195,7 @@ Each generated report includes:
 
 ---
 
-## 🚧 Roadmap
+## Roadmap
 
 - [ ] Add complete JavaScript analysis and feature detection
 - [ ] Replace direct VPS uploads with Firebase Storage or another secure service
