@@ -44,7 +44,7 @@ The tool consists of:
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 BLineScan/
